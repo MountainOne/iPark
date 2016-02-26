@@ -1,6 +1,43 @@
 <resources>
     <string name="app_name">iPark</string>
+    <string name="title_activity_sign_in">登录</string>
+    <!--登录、注册-->
+    <string name="prompt_email">邮箱:</string>
+    <string name="prompt_password">密码:</string>
+    <string name="prompt_confirm_password">重复密码:</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_sign_up">注册</string>
+    <string name="sign_up">注册新帐号</string>
+    <string name="sign_in">登陆账户</string>
+    <string name="error_empty_email">输入邮箱</string>
+    <string name="error_pattern_email">邮箱格式错误</string>
+    <string name="error_empty_password">密码不能为空</string>
+    <string name="error_length_password">密码长度小于6</string>
+    <string name="error_invalid">邮箱或密码错误</string>
+    <string name="error_confirm_password">输入密码不一致</string>
+    <string name="error_empty_nickname">昵称不能为空</string>\
+    <string name="unavailable_network_connection">网络不可用，请检查WI-FI或移动数据连接</string>
+
+    <string name="success_signin">登陆成功</string>
+    <string name="success_signup">注册成功</string>
+    <string name="title_activity_sign">SignActivity</string>
+
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="prompt_nickname">昵称</string>
+    <string name="title_activity_square">SquareActivity</string>
+
+    <string name="menu_text_squre">广场</string>
+    <string name="menu_text_my">我的</string>
+
+    <string name="random_seed">geekband</string>
+    <string name="title_activity_main">MainActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_west_park">west_park</string>
+    <string name="title_activity_east_park">east_park</string>
+    <string name="title_activity_south_park">south_park</string>
 </resources>
