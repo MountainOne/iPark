@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        >
+
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/west_park"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="西侧停车场"
+            android:layout_weight="1"
+            android:background="@drawable/button_shape"
+            android:textColor="@color/colorWhite"
+            android:textSize="23dp"
+            />
+        <Button
+            android:id="@+id/east_park"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="东部停车场"
+            android:layout_weight="1"
+            android:background="@drawable/button_shape"
+            android:textColor="@color/colorWhite"
+            android:textSize="23dp"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/south_park"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="南侧停车场"
+        android:background="@drawable/button_shape"
+        android:textColor="@color/colorWhite"
+        android:textSize="23dp"
+        />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+
+</LinearLayout>
