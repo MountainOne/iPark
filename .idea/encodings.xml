@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/arrows.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/arrowsleft.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/arrowsright.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/backgroundgreen.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/cargreen.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/carred.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/caryellow.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/line.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/line1.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/north.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/pic1.jpeg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/pic2.jpeg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/pic3.jpeg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/pic4.jpeg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/shape.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/tingche.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/user_setting.png" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

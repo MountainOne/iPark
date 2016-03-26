@@ -3,6 +3,7 @@ package com.example.administrator.ipark.ui.activity;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.administrator.ipark.R;
 import com.example.administrator.ipark.util.StreamUtil;
@@ -25,9 +28,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class east_park extends FragmentActivity implements View.OnClickListener {
-
-    Button mCar1,mCar2;
+public class east_park extends FragmentActivity implements SwipeRefreshLayout.OnRefreshListener {
+    private SwipeRefreshLayout mSwipeLayout;
+    ImageView mCar1,mCar2;
     private static final int SHOW_RESPONSE = 1;
     private Handler handler = new Handler(){
         @Override
@@ -35,10 +38,10 @@ public class east_park extends FragmentActivity implements View.OnClickListener 
             switch (msg.what){
                 case SHOW_RESPONSE :
                     if(msg.arg1 == 1){
-                        mCar1.setBackgroundResource(R.color.colorOrange);
+                        mCar1.setVisibility(View.VISIBLE);
                     }
                     if (msg.arg2 == 1){
-                        mCar2.setBackgroundResource(R.color.colorOrange);
+                        mCar2.setVisibility(View.VISIBLE);
                     }
                     break;
                 default:
@@ -52,23 +55,16 @@ public class east_park extends FragmentActivity implements View.OnClickListener 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_east_park);
         getServerResponse();
-        mCar1 = (Button) findViewById(R.id.car1);
-        mCar2 = (Button) findViewById(R.id.car2);
-        mCar1.setOnClickListener(this);
 
+        mCar1 = (ImageView) findViewById(R.id.Car1);
+        mCar2 = (ImageView) findViewById(R.id.Car2);
+        mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.id_swipe_ly);
+        mSwipeLayout.setOnRefreshListener(this);
+        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
     }
 
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.car1:
-                mCar1.setBackgroundResource(R.color.colorOrange);
-                break;
-            default:
-                break;
-        }
-    }
 
     private void getServerResponse(){
         //开启线程来发送网络请求
@@ -91,23 +87,16 @@ public class east_park extends FragmentActivity implements View.OnClickListener 
                     String json = new String(is);
                     //解析返回的JSON对象
                     JSONObject jsonObject = new JSONObject(json);
-                    int car_1 = jsonObject.getInt("1");
-                    int car_2 = jsonObject.getInt("2");
-                    Log.d("Car2",car_2 + "");
-//                    BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-//                    StringBuilder response = new StringBuilder();
-//                    String line;
-//                    while ((line = reader.readLine()) != null){
-//                        response.append(line);
-//                    }
 
+                    int car_1 =  jsonObject.getInt("1");
+                    int car_2 =  jsonObject.getInt("2");
                     Message message = new Message();
                     message.what = SHOW_RESPONSE;
 
                     //服务器将返回的结果存放到Message中
                     message.arg1 = car_1;
                     message.arg2 = car_2;
-                    Log.d("Car1",car_1 + "");
+
                     handler.sendMessage(message);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -124,4 +113,14 @@ public class east_park extends FragmentActivity implements View.OnClickListener 
         }).start();
     }
 
+    @Override
+    public void onRefresh() {
+        (new Handler()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSwipeLayout.setRefreshing(false);
+                Toast.makeText(east_park.this,"刷新成功",Toast.LENGTH_SHORT).show();
+            }
+        }, 4000);
+    }
 }
