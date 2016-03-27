@@ -2,6 +2,7 @@
     <string name="app_name">iPark</string>
     <string name="title_activity_sign_in">登录</string>
     <!--登录、注册-->
+    <string name="prompt_phone_number">手机号</string>
     <string name="prompt_email">邮箱:</string>
     <string name="prompt_password">密码:</string>
     <string name="prompt_confirm_password">重复密码:</string>
@@ -10,6 +11,7 @@
     <string name="sign_up">注册新帐号</string>
     <string name="sign_in">登陆账户</string>
     <string name="error_empty_email">输入邮箱</string>
+    <string name="error_pattern_phoneNumber">手机号格式错误</string>
     <string name="error_pattern_email">邮箱格式错误</string>
     <string name="error_empty_password">密码不能为空</string>
     <string name="error_length_password">密码长度小于6</string>

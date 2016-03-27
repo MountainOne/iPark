@@ -53,11 +53,11 @@
                     android:paddingLeft="5dp"
                     android:textSize="@dimen/sign_text_size"
                     android:textColor="@color/colorGrey"
-                    android:text="@string/prompt_email"
+                    android:text="@string/prompt_phone_number"
                     />
 
                 <AutoCompleteTextView
-                    android:id="@+id/email"
+                    android:id="@+id/phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/sign_view_height"
                     android:paddingLeft="5dp"

@@ -55,7 +55,7 @@
                     android:paddingLeft="@dimen/sign_padding_left"
                     android:textSize="@dimen/sign_text_size"
                     android:textColor="@color/colorGrey"
-                    android:text="@string/prompt_email"/>
+                    android:text="@string/prompt_phone_number"/>
 
                 <AutoCompleteTextView
                     android:id="@+id/email"

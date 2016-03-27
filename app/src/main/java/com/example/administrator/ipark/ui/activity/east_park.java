@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.administrator.ipark.ApplicationContext;
 import com.example.administrator.ipark.R;
 import com.example.administrator.ipark.util.StreamUtil;
 
@@ -30,18 +31,30 @@ import java.net.URL;
 
 public class east_park extends FragmentActivity implements SwipeRefreshLayout.OnRefreshListener {
     private SwipeRefreshLayout mSwipeLayout;
-    ImageView mCar1,mCar2;
+    private ImageView mCar1,mCar2,mCar3,mCar4;
     private static final int SHOW_RESPONSE = 1;
+    private static final String mPath = "/index.php";
+    //使用全局变量
+    private ApplicationContext mAppContext;
+
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
+//            Log.d("Test","1234");
+            Bundle bundle = msg.getData();
             switch (msg.what){
                 case SHOW_RESPONSE :
-                    if(msg.arg1 == 1){
+                    if(bundle.getInt("car1") == 1){
                         mCar1.setVisibility(View.VISIBLE);
                     }
-                    if (msg.arg2 == 1){
+                    if (bundle.getInt("car2") == 1){
                         mCar2.setVisibility(View.VISIBLE);
+                    }
+                    if (bundle.getInt("car3") == 1){
+                        mCar3.setVisibility(View.VISIBLE);
+                    }
+                    if (bundle.getInt("car4") == 1){
+                        mCar4.setVisibility(View.VISIBLE);
                     }
                     break;
                 default:
@@ -54,10 +67,13 @@ public class east_park extends FragmentActivity implements SwipeRefreshLayout.On
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_east_park);
+        mAppContext = (ApplicationContext) getApplication();
         getServerResponse();
 
         mCar1 = (ImageView) findViewById(R.id.Car1);
         mCar2 = (ImageView) findViewById(R.id.Car2);
+        mCar3 = (ImageView) findViewById(R.id.Car3);
+        mCar4 = (ImageView) findViewById(R.id.Car4);
         mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.id_swipe_ly);
         mSwipeLayout.setOnRefreshListener(this);
         mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
@@ -74,7 +90,7 @@ public class east_park extends FragmentActivity implements SwipeRefreshLayout.On
 
                 HttpURLConnection connection = null;
                 try{
-                    URL url = new URL("http://forest.picp.net:22973/index.php");
+                    URL url = new URL(mAppContext.getUrl(mPath));
                     connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setConnectTimeout(8000);
@@ -82,22 +98,25 @@ public class east_park extends FragmentActivity implements SwipeRefreshLayout.On
 
 
                     InputStream in = connection.getInputStream();
-                    //下面获取到的输入流进行读取
+//                    //下面获取到的输入流进行读取
                     byte[] is = StreamUtil.readInputStream(in);
                     String json = new String(is);
                     //解析返回的JSON对象
                     JSONObject jsonObject = new JSONObject(json);
-
-                    int car_1 =  jsonObject.getInt("1");
-                    int car_2 =  jsonObject.getInt("2");
                     Message message = new Message();
                     message.what = SHOW_RESPONSE;
 
                     //服务器将返回的结果存放到Message中
-                    message.arg1 = car_1;
-                    message.arg2 = car_2;
+
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("car1", jsonObject.getInt("1"));
+                    bundle.putInt("car2", jsonObject.getInt("2"));
+                    bundle.putInt("car3", jsonObject.getInt("3"));
+                    bundle.putInt("car4", jsonObject.getInt("4"));
+                    message.setData(bundle);
 
                     handler.sendMessage(message);
+                    in.close();
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -118,6 +137,7 @@ public class east_park extends FragmentActivity implements SwipeRefreshLayout.On
         (new Handler()).postDelayed(new Runnable() {
             @Override
             public void run() {
+                getServerResponse();
                 mSwipeLayout.setRefreshing(false);
                 Toast.makeText(east_park.this,"刷新成功",Toast.LENGTH_SHORT).show();
             }
