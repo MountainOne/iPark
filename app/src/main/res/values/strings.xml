@@ -10,6 +10,7 @@
     <string name="action_sign_up">注册</string>
     <string name="sign_up">注册新帐号</string>
     <string name="sign_in">登陆账户</string>
+    <string name="error_empty_phone_number">输入手机号</string>
     <string name="error_empty_email">输入邮箱</string>
     <string name="error_pattern_phoneNumber">手机号格式错误</string>
     <string name="error_pattern_email">邮箱格式错误</string>

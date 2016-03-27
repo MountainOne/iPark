@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        android:name=".ApplicationContext"
         android:allowBackup="true"
         android:icon="@drawable/yi_ting"
         android:label="@string/app_name"
@@ -12,11 +13,7 @@
         <activity
             android:name=".ui.activity.SignInActivity"
             android:label="宜停" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.activity.SignUpActivity"
@@ -25,6 +22,11 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".ui.activity.west_park"

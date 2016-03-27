@@ -36,7 +36,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-public class SignInActivity extends FragmentActivity implements View.OnClickListener {
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int  UNCONNECTED = -1;
     private static final int  SUCCESS = 1;
     private static final int ERROR = 0;
@@ -72,10 +72,11 @@ public class SignInActivity extends FragmentActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_sign_in);
+        getSupportActionBar().hide();
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        mAppContext = (ApplicationContext) getApplicationContext();
+        setContentView(R.layout.activity_sign_in);
+        mAppContext = (ApplicationContext) getApplication();
         findViewById(R.id.sign_up_button).setOnClickListener(this);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
 
