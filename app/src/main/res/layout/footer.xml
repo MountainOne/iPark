@@ -26,13 +26,13 @@
 
 
         <RadioButton
-            android:id="@+id/menu_publish_radio_button"
+            android:id="@+id/menu_map_radio_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:button="@null"
-            android:drawableTop="@drawable/menu_publish_selector"
+            android:drawableTop="@drawable/menu_map_selector"
 
             />
 

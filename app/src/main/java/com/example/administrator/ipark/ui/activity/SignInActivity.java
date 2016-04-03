@@ -85,6 +85,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void SignIn(){
+
         //重置错误提示
         mPhoneNumber.setError(null);
         mPassword.setError(null);
@@ -115,17 +116,24 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             focusView = mPassword;
             isValid = false;
         }
+
         if(isValid == false) {
+
             focusView.requestFocus();
         }else if(NetworkStatus.isNetworkConnected(getApplicationContext())){
+
             new Thread(){
+               @Override
                 public void run(){
+                    Log.e("TAG", "1");
                     JSONObject user = new JSONObject();
-                    try {
+                   Log.e("TAG", "3");
+                    try { Log.e("TAG", "2");
                         user.put("username", phoneNumber);
                         user.put("passwd", password);
 
                         String url = mAppContext.getUrl(mPath);
+                        Log.e("TAG", "4");
                         doPostRequest(url, user);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -138,8 +146,10 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     private void doPostRequest(String path, JSONObject data){
         try {
             //获得传输的实体
+            Log.e("COM", "1");
             byte[] entity = data.toString().getBytes("UTF-8");
             URL url = new URL(path);
+            Log.e("COM", url.toString());
             //实例化一个 HTTP连接对象
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setConnectTimeout(5000);//定义超时时间
@@ -155,12 +165,14 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
             int responseCode = connection.getResponseCode();
             if (responseCode == 200) {
+                Log.e("COM", "2");
                 //处理成功的请求
                 InputStream inputStream = connection.getInputStream();
                 byte[] is = StreamUtil.readInputStream(inputStream);
                 String info = new String(is);
-
+                Log.e("COM", info);
                 if(info.equals("Login OK")){
+                    Log.e("COM", "3");
                     //创建消息对象
                     Message msg = Message.obtain();
                     msg.what = SUCCESS;
