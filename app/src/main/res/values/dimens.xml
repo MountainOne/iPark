@@ -11,4 +11,11 @@
     <dimen name="sign_text_size">14dp</dimen>
     <dimen name="sign_button_size">16sp</dimen>
     <dimen name="sign_padding_left">5dp</dimen>
+
+    <!-- item -->
+    <dimen name="item_title_tv">15sp</dimen>
+    <dimen name="item_date_tv">12sp</dimen>
+    <dimen name="item_tag_tv">10sp</dimen>
+    <dimen name="item_content_padding">9dp</dimen>
+    <dimen name="item_via_tv">12sp</dimen>
 </resources>

@@ -4,6 +4,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.Window;
 import android.widget.RadioButton;
@@ -14,15 +17,16 @@ import com.baidu.mapapi.navi.BaiduMapAppNotSupportNaviException;
 import com.baidu.mapapi.navi.BaiduMapNavigation;
 import com.baidu.mapapi.navi.NaviPara;
 import com.example.administrator.ipark.R;
-import com.example.administrator.ipark.fragment.Main_fragment;
 import com.example.administrator.ipark.fragment.My_fragment;
+import com.example.administrator.ipark.fragment.Park_fragment;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
     //初始化fragment
-    private Main_fragment main_fgt;
+
     private My_fragment my_fgt;
     private RadioButton mRbtn_squre,mRbtn_my,mRbtn_map;
+    private Park_fragment park_fragment;
 
 
     // 北京科技大学
@@ -44,22 +48,26 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mRbtn_map.setOnClickListener(this);
         mRbtn_my.setOnClickListener(this);
         mRbtn_squre.setOnClickListener(this);
-        setDefaultFragment();
+
+
+       setDefaultFragment();
 
     }
     //设置默认fragment
     private void setDefaultFragment(){
-        android.app.FragmentManager fm = getFragmentManager();
-        android.app.FragmentTransaction ts = fm.beginTransaction();
-         main_fgt = new Main_fragment();
-        ts.replace(R.id.layout, main_fgt);
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ts = fm.beginTransaction();
+        park_fragment = new Park_fragment();
+        ts.replace(R.id.layout,park_fragment);
         ts.commit();
     }
+
+    //点击事件
     @Override
     public void onClick(View v) {
 
-        android.app.FragmentManager fragmentManager = getFragmentManager();
-        android.app.FragmentTransaction transaction = fragmentManager.beginTransaction();
+      FragmentManager fragmentManager = getSupportFragmentManager();
+      FragmentTransaction transaction = fragmentManager.beginTransaction();
         switch (v.getId()){
 
             case R.id.menu_map_radio_button:
@@ -69,13 +77,15 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 if(my_fgt == null) {
                     my_fgt = new My_fragment();
                 }
+
                 transaction.replace(R.id.layout, my_fgt);
                 break;
             case R.id.menu_square_radio_button:
-                if(main_fgt == null){
-                    main_fgt = new Main_fragment();
+                if(park_fragment == null){
+
+                    park_fragment = new Park_fragment();
                 }
-                transaction.replace(R.id.layout, main_fgt);
+                transaction.replace(R.id.layout, park_fragment);
                 break;
             default:
                 break;
